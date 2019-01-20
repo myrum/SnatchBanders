@@ -9,10 +9,14 @@ public class leScripty : MonoBehaviour
     public float leFloat;
     public float maximo = 0.05f;
     private Rigidbody rb;
+
+    public float moveSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
+        moveSpeed = 1f;
     }
 
     // Update is called once per frame
@@ -32,7 +36,8 @@ public class leScripty : MonoBehaviour
         {
             leFloat = Input.GetAxis("Vertical");
             myTranslate = new Vector3(0, 0, leFloat);
-            transform.Translate(myTranslate*maximo);
+            // i divided maximo by 3 to slow movement of juegador
+            transform.Translate(myTranslate*(maximo/3));
 
             Vector3 movement = new Vector3(0.0f, leFloat, 0.0f);
 
